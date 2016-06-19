@@ -25,39 +25,39 @@
   </div>
 
   <script>
-  this.text = '';
-  this.disabled = true;
-  this.items = opts.items;
-
-  // input text-box check
-  input(e) {
-    this.text = e.target.value;
-  }
-
-  // add message
-  send(e) {
-    new_message = {
-      'username': 'ゲスト',
-      'text': this.text,
-      'icon_emoji': ':tophat:'
-    };
-    opts.items.unshift(new_message);
-
-    fetch('http://mbanana.kosk.me/api?q=' + this.text)
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(json) {
-      opts.items.unshift(json);
-      riot.update();
-    });
-
     this.text = '';
-    document.chat_form.chat_input.value = '';
-  }
+    this.disabled = true;
+    this.items = opts.items;
 
-  this.on('update', function() {
-    opts.emojify.run();
-  });
+    // input text-box check
+    input(e) {
+      this.text = e.target.value;
+    }
+
+    // add message
+    send(e) {
+      new_message = {
+        'username': 'ゲスト',
+        'text': this.text,
+        'icon_emoji': ':tophat:'
+      };
+      opts.items.unshift(new_message);
+
+      fetch('http://mbanana.kosk.me/api?q=' + this.text)
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(json) {
+        opts.items.unshift(json);
+        riot.update();
+      });
+
+      this.text = '';
+      document.chat_form.chat_input.value = '';
+    }
+
+    this.on('update', function() {
+      opts.emojify.run();
+    });
   </script>
 </app>
