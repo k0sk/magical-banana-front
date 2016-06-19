@@ -21,6 +21,7 @@ riot.tag('app', '<div class="container"> <div class="text-center"> <h1>{opts.tit
     })
     .then(function(json) {
       opts.items.unshift(json);
+      riot.update();
     });
 
     this.text = '';

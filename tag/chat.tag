@@ -49,6 +49,7 @@
     })
     .then(function(json) {
       opts.items.unshift(json);
+      riot.update();
     });
 
     this.text = '';
