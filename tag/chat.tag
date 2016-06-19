@@ -10,7 +10,7 @@
         <button disabled={ !text } class="btn btn-primary">送信</button>
       </form>
     </div>
-    <div class="media" each={ items }>
+    <div class="media { icon_emoji == ':banana:' ? 'text-left' : 'text-right' }" each={ items }>
       <div class="media-left" if={ icon_emoji == ':banana:'}>
         {icon_emoji}
       </div>
