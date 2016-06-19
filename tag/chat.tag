@@ -18,7 +18,7 @@
         <h4 class="media-heading">{ username }</h4>
         <p>{ text }</p>
       </div>
-      <div class="media-left" if={ icon_emoji != ':banana:'}>
+      <div class="media-right" if={ icon_emoji != ':banana:'}>
         {icon_emoji}
       </div>
     </div>
@@ -55,5 +55,9 @@
     this.text = '';
     document.chat_form.chat_input.value = '';
   }
+
+  this.on('update', function() {
+    opts.emojify.run();
+  });
   </script>
 </app>

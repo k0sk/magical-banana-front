@@ -1,4 +1,4 @@
-riot.tag('app', '<div class="container"> <div class="text-center"> <h1>{opts.title}</h1> <p class="lead">〇〇と言ったら××</p> <form name="chat_form" class="form-inline" onsubmit="{send}"> <div class="form-group"> <input type="text" name="chat_input" class="form-control" onkeyup="{input}" placeholder="メッセージ" size="60"> </div> <button __disabled="{!text}" class="btn btn-primary">送信</button> </form> </div> <div class="media" each="{items}"> <div class="media-left" if="{icon_emoji == \':banana:\'}"> {icon_emoji} </div> <div class="media-body"> <h4 class="media-heading">{username}</h4> <p>{text}</p> </div> <div class="media-left" if="{icon_emoji != \':banana:\'}"> {icon_emoji} </div> </div> </div>', '', '', function(opts) {
+riot.tag('app', '<div class="container"> <div class="text-center"> <h1>{opts.title}</h1> <p class="lead">〇〇と言ったら××</p> <form name="chat_form" class="form-inline" onsubmit="{send}"> <div class="form-group"> <input type="text" name="chat_input" class="form-control" onkeyup="{input}" placeholder="メッセージ" size="60"> </div> <button __disabled="{!text}" class="btn btn-primary">送信</button> </form> </div> <div class="media" each="{items}"> <div class="media-left" if="{icon_emoji == \':banana:\'}"> {icon_emoji} </div> <div class="media-body"> <h4 class="media-heading">{username}</h4> <p>{text}</p> </div> <div class="media-right" if="{icon_emoji != \':banana:\'}"> {icon_emoji} </div> </div> </div>', '', '', function(opts) {
   this.text = '';
   this.disabled = true;
   this.items = opts.items;
@@ -27,4 +27,8 @@ riot.tag('app', '<div class="container"> <div class="text-center"> <h1>{opts.tit
     this.text = '';
     document.chat_form.chat_input.value = '';
   }.bind(this)
+
+  this.on('update', function() {
+    opts.emojify.run();
+  });
 });
